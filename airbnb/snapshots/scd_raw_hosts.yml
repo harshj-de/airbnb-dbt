@@ -1,0 +1,8 @@
+snapshots:
+  - name: scd_raw_hosts
+    relation: source('airbnb', 'hosts')
+    config:
+      unique_key: id
+      strategy: check
+      check_cols: ['name', 'is_superhost']
+      hard_deletes: invalidate
