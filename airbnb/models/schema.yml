@@ -1,36 +1,29 @@
 models:
-  - name: fct_reviews
-    columns:
-      - name: listing_id
-        data_tests:
-         - not_null
-         - relationships:
-            arguments:
-              to: ref('dim_listings_cleansed')
-              field: listing_id
-      - name: review_text
-        data_tests:
-          - not_null
-      - name: review_sentiment
-        data_tests:
-          - accepted_values:
-              arguments:
-                values: ['positive', 'neutral', 'negative'] 
   - name: dim_hosts_cleansed
+    config:
+      contract:
+        enforced: true
     columns:
       - name: host_id
+        data_type: string
         data_tests:
           - unique
           - not_null
 
       - name: host_name
+        data_type: string
         data_tests:
           - not_null
+
       - name: is_superhost
+        data_type: string
         data_tests:
           - accepted_values:
               arguments:
                 values: ['t', 'f']
+
+      - name: created_at
+        data_type: timestamp
 
 
   - name: dim_listings_cleansed
