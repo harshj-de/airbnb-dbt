@@ -1,4 +1,11 @@
 models:
+  - name: fct_reviews
+    columns:
+      - name: review_id
+        data_tests:
+          - unique
+          - not_null
+
   - name: dim_hosts_cleansed
 
     config:
