@@ -78,6 +78,7 @@ models:
                 field: host_id
       
       - name: minimum_nights
+        description: '{{ doc("dim_listings_cleansed__minimum_nights") }}'
         data_tests:
           - positive_values
         

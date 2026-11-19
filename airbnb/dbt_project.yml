@@ -36,6 +36,8 @@ models:
       +materialized: table
     src:
       +materialized: ephemeral
+      
+asset-paths: ["assets"]
 
 data_tests:
   +store_failures: true
