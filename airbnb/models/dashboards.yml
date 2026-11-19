@@ -1,0 +1,11 @@
+exposures:
+  - name: executive_dashboard
+    label: Executive Dashboard
+    type: dashboard
+    maturity: low
+    url: https://4163ad65.us1a.app.preset.io/dashboard/p/5RMWpw47xOK/
+    description: Full moon vs review sentiment, built in Preset on the mart layer.
+    depends_on:
+      - ref('mart_fullmoon_reviews')
+    owner:
+      name: Harsh Jariwala
