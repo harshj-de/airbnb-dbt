@@ -7,12 +7,13 @@ models:
           - not_null
 
   - name: dim_hosts_cleansed
-
+    description: Cleansed table of Airbnb hosts. NULL names replaced with 'Anonymous'.
     config:
       contract:
         enforced: true
     columns:
       - name: host_id
+        description: Primary key for the host.
         data_type: string
         constraints:
           - type: not_null
@@ -29,6 +30,7 @@ models:
           - not_null
 
       - name: is_superhost
+        description: "'t' if the host is a superhost, 'f' if not. NULL for 15 hosts with incomplete records."
         data_type: string
         data_tests:
           - accepted_values:
@@ -40,6 +42,7 @@ models:
 
 
   - name: dim_listings_cleansed
+    description: Cleansed table containing Airbnb listings.
     data_tests:
       - minimum_row_count:
           arguments:
@@ -47,6 +50,7 @@ models:
           
     columns:
       - name: listing_id
+        description: Primary key for the listing.
         data_tests:
           - unique
           - not_null
@@ -54,13 +58,18 @@ models:
       - name: listing_name
         data_tests:
           - not_null
+
+
       - name: room_type
+        description: Type of the apartment / room.
         data_tests:
           - accepted_values:
               arguments:
                 values: ['Entire home/apt', 'Private room', 'Shared room', 'Hotel room']
 
       - name: host_id
+        description: The host's ID. References the host table
+
         data_tests:
           - not_null
           - relationships:
@@ -71,8 +80,10 @@ models:
       - name: minimum_nights
         data_tests:
           - positive_values
+        
 
       - name: price
+        description: Nightly price in USD. NULL when the source sent 0 (unknown price, e.g. 8 Berlin hotels).
         data_tests:
           - positive_values
 
